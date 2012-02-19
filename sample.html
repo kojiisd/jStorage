@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Taste of Tech Topic～jStorageサンプル～</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    
+    <script src="jquery-1.7.js"></script>
+    <script src="jstorage.js"></script>
+    <script src="jquery.json-2.3.js"></script>
+    <script>
+        function insert_value(){
+            var key = "note";
+            var value = $("#valueArea").val();
+            $.jStorage.set(key, value);
+        }
+      
+        function get_value(){
+          var value = $.jStorage.get("note", "");
+          $('#valueArea').val(value);
+        }
+      
+        function flush_values(){
+          $.jStorage.flush();
+        }
+
+	function display_storageSize(){
+	  alert($.jStorage.storageSize());
+	}
+
+	function display_currentBackend(){
+	  alert($.jStorage.currentBackend());
+	}
+      
+    </script>
+  </head>
+  <body>
+  
+  <h2>Taste of Tech Topic～jStorageサンプル～</h2>
+
+  <p>以下に記載した文字列が、Key：noteに対する値として保管されます。<br/>
+     初期化ボタンを押下すると、保存された値が削除されます。</p>
+
+
+  <table cellspacing="0" cellpadding="0" style="width: 300px">
+    <tr>
+      <td colspan="3"><textarea id="valueArea" cols="40" rows="5" ></textarea></td>
+    </tr>
+    <tr>
+      <td><input type="button" onclick="insert_value();" value="追加" /></td>
+      <td><input type="button" onclick="get_value();" value="読込" /></td>
+      <td><input type="button" onclick="flush_values();" value="初期化" /></td>
+      
+    </tr>
+  </table>
+      <input type="button" onclick="display_storageSize();" value="サイズ" />
+      <input type="button" onclick="display_currentBackend();" value="背景" />
+  </body>
+</html>
